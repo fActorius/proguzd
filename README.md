@@ -1,4 +1,4 @@
-# proguzd
+# ProgUžd
 Programuotojo užduotis ORCA TEAM
 
 Sveiki,
