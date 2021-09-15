@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Užduotis programuotojui</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="comments.css" rel="stylesheet" type="text/css">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+	    <nav class="navtop">
+	    	<div>
+	    		<h1>Commenting System</h1>
+	    	</div>
+	    </nav>
+
+        <div class="comments"></div>
+        <script>
+        const comments_page_id = 1;
+        fetch("comments.php?page_id=" + comments_page_id).then(response => response.text()).then(data => {
+            document.querySelector(".comments").innerHTML = data;
+            document.querySelectorAll(".comments .write_comment_btn, .comments .reply_comment_btn").forEach(element => {
+                element.onclick = event => {
+                    event.preventDefault();
+                    document.querySelectorAll(".comments .write_comment").forEach(element => element.style.display = 'none');
+                    document.querySelector("div[data-comment-id='" + element.getAttribute("data-comment-id") + "']").style.display = 'block';
+                    document.querySelector("div[data-comment-id='" + element.getAttribute("data-comment-id") + "'] input[email='email']").focus();
+                    document.querySelector("div[data-comment-id='" + element.getAttribute("data-comment-id") + "'] input[name='name']").focus();
+                };
+            });
+            document.querySelectorAll(".comments .write_comment form").forEach(element => {
+                element.onsubmit = event => {
+                    event.preventDefault();
+                    fetch("comments.php?page_id=" + comments_page_id, {
+                        method: 'POST',
+                        body: new FormData(element)
+                    }).then(response => response.text()).then(data => {
+                        element.parentElement.innerHTML = data;
+                    });
+                };
+            });
+        });
+        </script>
+	</body>
+</html>
