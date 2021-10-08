@@ -1,6 +1,5 @@
 # ProgUžd
-Programuotojo užduotis ORCA TEAM
-
+Programuotojo užduotis
 Sveiki,
 Aš esu Gediminas Semaška ir dariau šią užduotį norint patekti į Praktikanto vietą.
 Visų pirmą, php kalbos moku tik pačius pagrindus(kaip prisijungti prie duombazės, išvesti į ekraną kokią eilutę), css kalbos deja išvis dar nemoku, bet darant šį darbą supratau, kad nėra nieko sunkaus ją suprasti, o tiesiog reikia žinoti ką rašai. Deja, bet nei su JS, nei su AJAX nesu turėjęs niekada reikalų(nemokė).
